@@ -41,19 +41,19 @@ function sampleOrders() {
   });
   return [
     mk('MR-3021', 25, {
-      dayId: 'fri', day: 'יום שישי', fulfil: 'delivery', slot: '11:00–13:00', city: 'רמת גן', street: 'ז׳בוטינסקי 14', apt: 'קומה 2',
+      dayId: 'thu', day: 'יום חמישי', fulfil: 'delivery', slot: '16:00–18:00', city: 'רמת גן', street: 'ז׳בוטינסקי 14', apt: 'קומה 2',
       customer: { name: 'דנה לוי', phone: '052-1112233' }, notes: 'בלי חריף בבקשה',
       items: [{ name: 'חמין קלאסי של מרי', qty: 2, price: 58 }, { name: 'ג׳חנון', qty: 1, price: 32 }, { name: 'חומוס ביתי', qty: 2, price: 29 }],
       subtotal: 206, fee: 35, total: 241, pay: 'card',
     }),
     mk('MR-3017', 140, {
-      dayId: 'fri', day: 'יום שישי', fulfil: 'pickup', slot: '09:00–11:00', status: 'preparing',
+      dayId: 'thu', day: 'יום חמישי', fulfil: 'pickup', slot: '14:00–16:00', status: 'preparing',
       customer: { name: 'יוסי כהן', phone: '054-5556677' },
       items: [{ name: 'חמין משפחתי', qty: 1, price: 160 }, { name: 'קוגל תפוחי אדמה', qty: 1, price: 38 }],
       subtotal: 198, fee: 0, total: 198, pay: 'cash',
     }),
     mk('MR-3009', 600, {
-      dayId: 'sat', day: 'מוצאי שבת', fulfil: 'pickup', slot: '20:30–21:30', status: 'done',
+      dayId: 'fri', day: 'יום שישי', fulfil: 'pickup', slot: '11:00–13:00', status: 'done',
       customer: { name: 'מיכל אברהם', phone: '050-9988776' },
       items: [{ name: 'לאפה במילוי חמין', qty: 3, price: 42 }, { name: 'עוגת שוקולד ביתית', qty: 1, price: 45 }],
       subtotal: 171, fee: 0, total: 171, pay: 'card',
