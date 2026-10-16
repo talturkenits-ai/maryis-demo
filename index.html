@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חמין עד הבית – הסירים של מרי אס</title>
+  <meta name="description" content="הזמנת חמין ומנות לשבת – איסוף עצמי או משלוח עד הבית.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="demo-bar">סקיצת הדגמה &middot; לא נשלחות הזמנות ולא מתבצעים חיובים אמיתיים</div>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="חמין עד הבית – לראש העמוד">
+    <img src="logo.jpg" alt="" width="46" height="46">
+    <span class="brand-text">
+      <span class="brand-name">חמין עד הבית</span>
+      <span class="brand-sub">הסירים של מרי אס</span>
+    </span>
+  </a>
+  <button class="cart-btn" id="openCart" type="button" aria-label="פתיחת העגלה">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>
+    <span>העגלה</span>
+    <span class="count" id="cartCount">0</span>
+  </button>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 -30 260 240" class="pot">
+      <g class="steam" fill="none" stroke="#fbf3e2" stroke-width="5" stroke-linecap="round">
+        <path class="s1" d="M96 30 q-12 -14 0 -28 q12 -14 0 -28"/>
+        <path class="s2" d="M130 24 q-12 -14 0 -28 q12 -14 0 -28"/>
+        <path class="s3" d="M164 30 q-12 -14 0 -28 q12 -14 0 -28"/>
+      </g>
+      <rect x="22" y="104" width="30" height="16" rx="8" fill="#1f353b"/>
+      <rect x="208" y="104" width="30" height="16" rx="8" fill="#1f353b"/>
+      <path d="M44 96 H216 V140 Q216 192 130 192 Q44 192 44 140 Z" fill="#2e4b53"/>
+      <path d="M62 112 V140 Q62 170 96 180" fill="none" stroke="#4d7078" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+      <rect x="38" y="86" width="184" height="14" rx="7" fill="#1f353b"/>
+      <path d="M64 88 Q130 36 196 88 Z" fill="#2e4b53"/>
+      <path d="M82 84 Q122 52 160 66" fill="none" stroke="#4d7078" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+      <circle cx="130" cy="54" r="9" fill="#1f353b"/>
+    </svg>
+  </div>
+  <div class="hero-text">
+    <p class="eyebrow">הסירים של מרי אס</p>
+    <h1>חמין עד הבית,<br>כמו בבית</h1>
+    <p class="lead">בוחרים מנות מהתפריט, מחליטים אם לאסוף או שנביא עד הבית, ומשלמים באשראי או במזומן.</p>
+    <div class="cta-row">
+      <a class="cta" href="#menuSection">לתפריט וההזמנה</a>
+      <a class="cta ghost" href="https://www.instagram.com/mary.s1928/" target="_blank" rel="noopener">לאינסטגרם</a>
+    </div>
+  </div>
+  <div class="hero-photos" id="heroPhotos" aria-label="תמונות מהמטבח, אפשר ללחוץ להגדלה"></div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-inner">
+    <button type="button" class="lb-close" id="lbClose" aria-label="סגירה">&times;</button>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="התמונה הבאה">&#8250;</button>
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="התמונה הקודמת">&#8249;</button>
+    <figure class="lb-frame">
+      <img id="lbImg" alt="">
+      <figcaption>
+        <h3 id="lbTitle"></h3>
+        <p id="lbText"></p>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<section class="story">
+  <div class="wrap">
+    <blockquote>
+      <p>מרי נהגה להכין את החמין על פלטה מכוסה בשמיכות צמר עבות.</p>
+      <p>המטבח הוקם לזכרה של <strong>מרים ממן</strong>, שאהבה להאכיל.</p>
+    </blockquote>
+    <ul class="perks">
+      <li>הזמנות לשבת פתוחות עד שישי אחר הצהריים</li>
+      <li>משלוחים באזור המרכז</li>
+      <li>מומלץ להזמין מראש</li>
+    </ul>
+  </div>
+</section>
+
+<main id="menuSection">
+  <div class="wrap">
+    <h2 class="section-title">התפריט</h2>
+    <div class="day-tabs" id="dayTabs" role="tablist" aria-label="בחירת יום"></div>
+    <p class="day-note" id="dayNote"></p>
+    <p class="closed-banner" id="closedBanner" hidden>ההזמנות ליום הזה סגורות כרגע. אפשר לעיין בתפריט ולחזור מאוחר יותר.</p>
+    <div id="menu"></div>
+  </div>
+</main>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <h2 class="section-title">מה אומרים עלינו</h2>
+      <div id="reviewStars" class="head-stars"></div>
+      <p class="reviews-sub">ביקורות מלקוחות</p>
+    </div>
+    <div class="review-track" id="reviewTrack" tabindex="0" aria-label="ביקורות לקוחות, אפשר לגלול הצידה"></div>
+  </div>
+</section>
+
+<section class="press" id="press">
+  <div class="wrap">
+    <p class="press-eyebrow">בתקשורת</p>
+    <h2 class="section-title">כתבו עלינו</h2>
+    <a class="press-card" id="pressLink" href="#" target="_blank" rel="noopener">
+      <div class="press-media"><img id="pressImg" alt="" loading="lazy"></div>
+      <div class="press-body">
+        <img id="pressLogo" class="press-logo" alt="ישראל היום" height="34">
+        <h3 id="pressTitle"></h3>
+        <p class="press-quote" id="pressQuote"></p>
+        <span class="press-cta">לקריאת הכתבה המלאה באתר ישראל היום <span aria-hidden="true">←</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="insta" id="insta">
+  <div class="wrap">
+    <h2 class="section-title">מהמטבח של מרי</h2>
+    <p class="insta-lead">הסירים בפעולה, ישר מהאינסטגרם <a href="https://www.instagram.com/mary.s1928/" target="_blank" rel="noopener" dir="ltr">@mary.s1928</a></p>
+    <div class="insta-grid" id="instaGrid"></div>
+    <a class="cta dark" href="https://www.instagram.com/mary.s1928/" target="_blank" rel="noopener">עוד באינסטגרם</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="logo.jpg" alt="חמין עד הבית – הסירים של מרי אס" width="72" height="72" class="foot-logo">
+    <p>להזמנות ושאלות: <a href="tel:0528280323" dir="ltr">052-8280323</a></p>
+    <div class="socials" id="socials" aria-label="הרשתות החברתיות שלנו"></div>
+    <p class="small">סקיצת הדגמה לתצוגה בלבד. המחירים, המנות והערים הם נתוני דוגמה.</p>
+    <a class="admin-toggle" href="admin.html">כניסת בעלת העסק (דמו)</a>
+  </div>
+</footer>
+
+<div class="float-bar" id="floatBar" hidden>
+  <button type="button" id="floatOpen">
+    <span>צפייה בעגלה</span>
+    <strong id="floatTotal">₪0</strong>
+  </button>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="העגלה והזמנה" tabindex="-1">
+  <div class="drawer-head">
+    <h2>ההזמנה שלך</h2>
+    <button type="button" class="icon-btn" id="closeCart" aria-label="סגירה">&times;</button>
+  </div>
+
+  <div class="drawer-body">
+    <p class="empty" id="emptyMsg">העגלה ריקה. אפשר להוסיף מנות מהתפריט.</p>
+
+    <form id="orderForm" novalidate hidden>
+      <p class="order-day" id="orderDay"></p>
+      <ul class="lines" id="lines"></ul>
+
+      <fieldset class="group">
+        <legend>איך מקבלים?</legend>
+        <div class="seg">
+          <label><input type="radio" name="fulfil" value="pickup" checked><span>איסוף עצמי</span></label>
+          <label><input type="radio" name="fulfil" value="delivery"><span>משלוח</span></label>
+        </div>
+        <label class="field">
+          <span id="slotLabel">שעת איסוף</span>
+          <select id="slot" name="slot"></select>
+        </label>
+        <p class="hint" id="pickupHint"></p>
+        <div id="deliveryFields" hidden>
+          <label class="field">
+            <span>עיר</span>
+            <select id="city" name="city"></select>
+          </label>
+          <div class="row2">
+            <label class="field"><span>רחוב ומספר בית</span><input type="text" id="street" autocomplete="street-address"></label>
+            <label class="field"><span>קומה / דירה</span><input type="text" id="apt"></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>פרטים ליצירת קשר</legend>
+        <div class="row2">
+          <label class="field"><span>שם מלא</span><input type="text" id="custName" autocomplete="name" required></label>
+          <label class="field"><span>טלפון</span><input type="tel" id="custPhone" autocomplete="tel" inputmode="tel" dir="rtl" required></label>
+        </div>
+        <label class="field"><span>הערות להזמנה (לא חובה)</span><textarea id="notes" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>אופן תשלום</legend>
+        <div class="seg">
+          <label><input type="radio" name="pay" value="card" checked><span>כרטיס אשראי</span></label>
+          <label><input type="radio" name="pay" value="cash"><span>מזומן</span></label>
+        </div>
+        <p class="hint" id="payHint"></p>
+      </fieldset>
+
+      <dl class="totals">
+        <div><dt>סכום ביניים</dt><dd id="tSub">₪0</dd></div>
+        <div><dt>דמי משלוח</dt><dd id="tFee">–</dd></div>
+        <div class="grand"><dt>סה״כ לתשלום</dt><dd id="tTotal">₪0</dd></div>
+      </dl>
+
+      <p class="form-error" id="formError" role="alert" hidden></p>
+
+      <button type="submit" class="primary" id="submitBtn">שליחת הזמנה</button>
+      <div id="paypalBox" hidden>
+        <div id="paypal-container"></div>
+        <p class="form-error" id="paypalError" role="alert" hidden></p>
+      </div>
+    </form>
+  </div>
+</aside>
+
+<div class="modal" id="doneModal" hidden role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+  <div class="modal-card">
+    <div class="check" aria-hidden="true">✓</div>
+    <h2 id="doneTitle">ההזמנה התקבלה</h2>
+    <p>מספר הזמנה <strong id="doneNum"></strong></p>
+    <p id="doneSummary" class="done-summary"></p>
+    <p class="small">זוהי הדגמה. בשלב הזה לא נשלחה הזמנה אמיתית ולא בוצע חיוב.</p>
+    <button type="button" class="primary" id="doneClose">חזרה לתפריט</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
