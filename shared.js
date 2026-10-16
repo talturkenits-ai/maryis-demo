@@ -34,12 +34,12 @@ const DEFAULT_DB = {
   ],
   days: [
     {
-      id: 'fri', label: 'יום שישי', open: true,
+      id: 'fri', weekday: 'fri', label: 'יום שישי', open: true,
       note: 'הזמנות עד יום חמישי ב-12:00 · איסוף ומשלוח ביום שישי',
       slots: ['09:00–11:00', '11:00–13:00', '13:00–14:30'],
     },
     {
-      id: 'sat', label: 'מוצאי שבת', open: true,
+      id: 'sat', weekday: 'motzash', label: 'מוצאי שבת', open: true,
       note: 'הזמנות עד יום שישי ב-12:00 · איסוף ומשלוח במוצאי שבת, מרגע צאת השבת',
       slots: ['19:30–20:30', '20:30–21:30', '21:30–22:30'],
     },
@@ -75,11 +75,27 @@ const DEFAULT_DB = {
   ],
 };
 
+/* ימי השבוע בסדר כרונולוגי. בעברית (RTL) היום הראשון ברשימה מוצג הכי ימינה. */
+const WEEKDAYS = [
+  ['sun', 'יום ראשון'], ['mon', 'יום שני'], ['tue', 'יום שלישי'], ['wed', 'יום רביעי'],
+  ['thu', 'יום חמישי'], ['fri', 'יום שישי'], ['sat', 'יום שבת'], ['motzash', 'מוצאי שבת'],
+];
+const WEEKDAY_LABEL = Object.fromEntries(WEEKDAYS);
+const weekdayIndex = d => WEEKDAYS.findIndex(w => w[0] === d.weekday);
+const sortDays = days => days.sort((a, b) => weekdayIndex(a) - weekdayIndex(b));
+
 function loadDB() {
   const saved = ls.get(DB_KEY, null);
-  return saved && Array.isArray(saved.items) && Array.isArray(saved.days)
+  const db = saved && Array.isArray(saved.items) && Array.isArray(saved.days)
     ? { ...structuredClone(DEFAULT_DB), ...saved, settings: { ...DEFAULT_DB.settings, ...saved.settings } }
     : structuredClone(DEFAULT_DB);
+  // נתונים שנשמרו לפני שנוסף יום שבוע: משלימים לפי השם שהיה להם
+  db.days.forEach(d => {
+    if (WEEKDAY_LABEL[d.weekday]) return;
+    d.weekday = (WEEKDAYS.find(w => w[1] === d.label) || [d.id === 'sat' ? 'motzash' : 'fri'])[0];
+  });
+  sortDays(db.days);
+  return db;
 }
 const saveDB = db => ls.set(DB_KEY, db);
 // משלים שדות להזמנות שנשמרו בגרסאות קודמות של הסקיצה

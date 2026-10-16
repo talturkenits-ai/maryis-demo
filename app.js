@@ -128,7 +128,7 @@ function renderCities() {
   const sel = $('#city');
   const prev = sel.value;
   sel.innerHTML = '<option value="">בחירת עיר</option>' +
-    DB.cities.map(c => `<option value="${esc(c.name)}">${esc(c.name)} · ${fmt(c.fee)}</option>`).join('');
+    DB.cities.map(c => `<option value="${esc(c.name)}">${esc(c.name)}</option>`).join('');
   if (DB.cities.some(c => c.name === prev)) sel.value = prev;
 }
 

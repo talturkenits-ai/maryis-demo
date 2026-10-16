@@ -23,12 +23,16 @@ const setSession = v => { try { v ? sessionStorage.setItem(SESSION_KEY, '1') : s
 const dayName = id => (DB.days.find(d => d.id === id) || {}).label || '';
 
 let toastTimer;
-function save() {
-  saveDB(DB);
+function notify(msg) {
   const t = $('#toast');
+  t.textContent = msg;
   t.hidden = false;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.hidden = true; }, 1400);
+  toastTimer = setTimeout(() => { t.hidden = true; }, 1800);
+}
+function save() {
+  saveDB(DB);
+  notify('נשמר');
 }
 
 function sampleOrders() {
@@ -212,7 +216,9 @@ function daysView() {
           <h3>${esc(d.label)}</h3>
           <label class="switch"><input type="checkbox" data-day-open ${d.open !== false ? 'checked' : ''}><span class="open-state ${d.open !== false ? 'on' : 'off'}">${d.open !== false ? 'פתוח להזמנות' : 'סגור להזמנות'}</span></label>
         </div>
-        <label class="field"><span>שם היום באתר</span><input type="text" data-day-field="label" value="${esc(d.label)}"></label>
+        <label class="field"><span>היום (הכותרת באתר מתעדכנת אוטומטית, והימים מסודרים לפי סדר השבוע)</span>
+          <select data-day-field="weekday">${WEEKDAYS.map(([k, v]) => `<option value="${k}" ${k === d.weekday ? 'selected' : ''}>${v}</option>`).join('')}</select>
+        </label>
         <label class="field"><span>הודעה ללקוחות (שעת סגירה, זמני משלוח...)</span><textarea data-day-field="note" rows="2">${esc(d.note)}</textarea></label>
         <label class="field"><span>חלונות זמן לאיסוף ולמשלוח (חלון בכל שורה)</span><textarea data-day-field="slots" rows="4">${esc((d.slots || []).join('\n'))}</textarea></label>
       </div>`).join('')}`;
@@ -313,8 +319,17 @@ panel.addEventListener('change', e => {
     const d = DB.days.find(x => x.id === card.dataset.dayId);
     if ('dayOpen' in t.dataset) { d.open = t.checked; save(); return render(); }
     const f = t.dataset.dayField;
+    if (f === 'weekday') {
+      if (DB.days.some(x => x !== d && x.weekday === t.value)) { notify('היום הזה כבר מוגדר, בחרו יום אחר'); return render(); }
+      const old = d.label;
+      d.weekday = t.value;
+      d.label = WEEKDAY_LABEL[t.value];
+      if (old !== d.label) d.note = d.note.split(old).join(d.label); // שם היום בהודעה מתעדכן גם הוא
+      sortDays(DB.days);
+      save();
+      return render();
+    }
     if (f === 'slots') d.slots = t.value.split('\n').map(s => s.trim()).filter(Boolean);
-    else if (f === 'label') d.label = t.value.trim() || d.label;
     else if (f === 'note') d.note = t.value.trim();
     return save();
   }
