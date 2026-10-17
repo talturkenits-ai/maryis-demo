@@ -325,7 +325,7 @@ function initExtras() {
   logo.src = p.logo;
   img.src = p.image;
   $('#socials').innerHTML = Object.entries(CONFIG.social).filter(([, url]) => url).map(([k, url]) =>
-    `<a href="${url}" target="_blank" rel="noopener" aria-label="${SOCIAL_LABELS[k]}" title="${SOCIAL_LABELS[k]}">${ICONS[k]}</a>`).join('');
+    `<a class="soc-${k}" href="${url}" target="_blank" rel="noopener" aria-label="${SOCIAL_LABELS[k]}" title="${SOCIAL_LABELS[k]}">${ICONS[k]}</a>`).join('');
 }
 
 /* ---------- תמונות מרחפות + הגדלה ---------- */
